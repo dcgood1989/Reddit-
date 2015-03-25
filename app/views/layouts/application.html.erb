@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RedditCloneApp</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <div class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-header">
+        <%= link_to "Reddit", root_path, class: "navbar-brand" %>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+          <li class="navbar-brand"><%= current_user.name %> <%= current_user.email %></li>
+          <li><%= link_to "Sign Out", sign_out_path %></li>
+        <% else %>
+          <li><%= link_to "Sign Up", sign_up_path %></li>
+          <li><%= link_to "Sign In", sign_in_path %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="container">
+      <% if flash[:notice] %>
+        <div class="alert alert-success">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+
+      <%= yield %>
+    </div>
+  </body>
+
+</html>

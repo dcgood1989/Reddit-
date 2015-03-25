@@ -1,0 +1,20 @@
+<h2>Reddit Front Page</h2>
+
+
+<% @posts.each do |post| %>
+  <p class="danger"><%= link_to "#{post.title}", post_path(post) %></p>
+  <br>
+  <%= post.body %>
+  <br>
+  <%= link_to "Edit Post", edit_post_path(post) %>
+  <br>
+  <hr>
+<% end %>
+
+<%= link_to "New Post", new_post_path %>
+<br>
+<%= link_to "Sign Up", sign_up_path %>
+<br>
+<%= link_to "Sign Out", sign_out_path %>
+<br>
+<%= link_to "Sign In", sign_in_path %>
